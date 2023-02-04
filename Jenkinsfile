@@ -29,7 +29,7 @@ pipeline {
     stage('Build docker image'){
         steps{
             script{
-                    bat "docker build -t debisun/devops-integration ."
+               sh 'docker build -t debisun/devops-integration .'
             }
         }
     }
