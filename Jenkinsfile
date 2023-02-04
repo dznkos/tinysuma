@@ -28,14 +28,9 @@ pipeline {
     
     stage('Build docker image'){
         steps{
-//             script{
-            docker.withTool('docker'){
-                docker.withRegistry('repo','credentials') {
+            script{
                     sh 'docker build -t debisun/devops-integration .'
-                }
             }
-
-//             }
         }
     }
   }
