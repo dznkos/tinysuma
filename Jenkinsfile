@@ -19,9 +19,9 @@ pipeline {
             }
         }
     
-    stage('build jar'){
+    stage('Build jar'){
       steps {
-        echo 'here'
+        echo 'build jar'
       }
     }
     
