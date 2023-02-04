@@ -4,6 +4,7 @@ pipeline {
   tools{
         maven 'maven3'
         jdk 'java11'
+        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
     }
   stages {  
     stage("main") {      
@@ -27,9 +28,14 @@ pipeline {
     
     stage('Build docker image'){
         steps{
-            script{
-                sh 'docker build -t debisun/devops-integration .'
+//             script{
+            docker.withTool('docker'){
+                docker.withRegistry('repo','credentials') {
+                    sh 'docker build -t debisun/devops-integration .'
+                }
             }
+
+//             }
         }
     }
   }
